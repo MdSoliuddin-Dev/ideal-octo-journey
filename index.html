@@ -1,363 +1,482 @@
 <!doctype html>
 <html lang="en" data-theme="system">
 <head>
-  <meta charset="utf-8">
-  <title>Energy-Boost Study Routine</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    /* ========== Design Tokens ========== */
-    :root {
-      --brand: #3b82f6;
-      --brand-600:#2563eb;
-      --bg: #0b0f14;
-      --surface: #0f1722;
-      --card: #121a27;
-      --text: #e6edf3;
-      --muted: #94a3b8;
-      --accent: #22c55e;
-      --warn: #f59e0b;
-      --danger:#ef4444;
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-      --radius-xl: 18px;
-      --radius-lg: 14px;
-      --radius-md: 12px;
-      --radius-sm: 10px;
-      --gap-1: 8px;
-      --gap-2: 12px;
-      --gap-3: 16px;
-      --gap-4: 20px;
-      --gap-5: 28px;
-      --gap-6: 36px;
-    }
-    @media (prefers-color-scheme: light) {
-      :root {
-        --bg:#f7fafc;
-        --surface:#ffffff;
-        --card:#ffffff;
-        --text:#0b1220;
-        --muted:#4b5563;
-        --shadow: 0 12px 30px rgba(2,6,23,.08);
-      }
-    }
-    [data-theme="light"]{
-      --bg:#f7fafc; --surface:#ffffff; --card:#ffffff; --text:#0b1220; --muted:#4b5563; --shadow: 0 12px 30px rgba(2,6,23,.08);
-    }
-    [data-theme="dark"]{
-      --bg:#0b0f14; --surface:#0f1722; --card:#121a27; --text:#e6edf3; --muted:#94a3b8; --shadow: 0 10px 30px rgba(0,0,0,.35);
-    }
-    /* ========== Base Reset ========== */
-    *, *::before, *::after { box-sizing: border-box; }
-    html, body { margin:0; padding:0; }
-    body {
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans", "Helvetica Neue", Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color: var(--text);
-      background: radial-gradient(1200px 800px at 10% -10%, rgba(37,99,235,.15), transparent 60%),
-                  radial-gradient(900px 700px at 100% 10%, rgba(34,197,94,.12), transparent 55%),
-                  var(--bg);
-      line-height: 1.6;
-    }
-    a { color: var(--brand); text-decoration: none; }
-    .container { width: min(1120px, 92vw); margin: 0 auto; }
-    /* Smooth anchor scrolling + offset for sticky header */
-    html { scroll-behavior: smooth; }
-    #timeline { scroll-margin-top: 90px; }
-    /* ========== Fluid Type Scale ========== */
-    h1 { font-weight: 800; letter-spacing: -0.02em; font-size: clamp(1.8rem, 2.8vw, 3rem); line-height: 1.15; }
-    h2 { font-weight: 700; letter-spacing: -0.01em; font-size: clamp(1.2rem, 1.8vw, 1.6rem); line-height: 1.2; }
-    h3 { font-weight: 700; font-size: clamp(1.05rem, 1.5vw, 1.25rem); }
-    p, li, button { font-size: clamp(0.95rem, 1.2vw, 1.05rem); }
-    /* ========== App Shell ========== */
-    header.nav {
-      position: sticky; top: 0; z-index: 40; backdrop-filter: saturate(1.2) blur(10px);
-      background: color-mix(in oklab, var(--surface) 90%, transparent);
-      border-bottom: 1px solid color-mix(in oklab, var(--text) 12%, transparent);
-    }
-    .nav-inner { display:flex; align-items:center; justify-content:space-between; padding: 14px 0; }
-    .brand { display:flex; align-items:center; gap: 10px; }
-    .logo {
-      width: 40px; height: 40px; border-radius: 12px;
-      background: conic-gradient(from 210deg, var(--brand), var(--accent), var(--brand));
-      box-shadow: inset 0 0 20px rgba(255,255,255,.18), 0 6px 16px rgba(0,0,0,.25);
-    }
-    .brand h3 { margin:0; }
-    .actions { display:flex; gap: 10px; align-items:center; }
-    .btn {
-      border: 1px solid color-mix(in oklab, var(--text) 12%, transparent);
-      background: color-mix(in oklab, var(--surface) 86%, transparent);
-      color: var(--text);
-      padding: 10px 14px; border-radius: 12px; cursor: pointer; transition: .2s ease;
-    }
-    .btn:hover { transform: translateY(-1px); border-color: color-mix(in oklab, var(--brand) 40%, transparent); }
-    .btn.primary { background: linear-gradient(180deg, var(--brand), var(--brand-600)); border-color: transparent; color: #fff; }
-    
+  <meta charset="utf-8">
+  <title>Energy-Boost Study Routine</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="dark light">
+  <style>
+    /* ========== Design Tokens ========== */
+    :root {
+      --brand: #3b82f6;
+      --brand-700: #1d4ed8;
+      --accent: #22c55e;
+      --warn: #f59e0b;
+      --danger: #ef4444;
+
+      --bg: #0b0f14;
+      --surface: #0f1722;
+      --card: #111826;
+      --card-2: #0e1623;
+
+      --text: #e6edf3;
+      --muted: #9aa6b2;
+
+      --ring: #7dd3fc;
+      --ring-contrast: #111827;
+
+      --radius-xl: 20px;
+      --radius-lg: 16px;
+      --radius-md: 12px;
+      --radius-sm: 10px;
+
+      --gap-1: 8px;
+      --gap-2: 12px;
+      --gap-3: 16px;
+      --gap-4: 20px;
+      --gap-5: 28px;
+      --gap-6: 36px;
+
+      --shadow-1: 0 10px 30px rgba(0,0,0,.35);
+      --shadow-2: 0 6px 18px rgba(0,0,0,.28);
+
+      --grid-min: 280px;
+      --container: 1200px;
+      --ease: cubic-bezier(.2,.8,.2,1);
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f7fafc;
+        --surface: #ffffff;
+        --card: #ffffff;
+        --card-2: #f8fafc;
+        --text: #0b1220;
+        --muted: #4b5563;
+        --shadow-1: 0 12px 30px rgba(2,6,23,.08);
+        --shadow-2: 0 8px 20px rgba(2,6,23,.08);
+      }
+    }
+
+    [data-theme="light"]{
+      --bg:#f7fafc; --surface:#ffffff; --card:#ffffff; --card-2:#f8fafc;
+      --text:#0b1220; --muted:#4b5563;
+      --shadow-1: 0 12px 30px rgba(2,6,23,.08);
+      --shadow-2: 0 8px 20px rgba(2,6,23,.08);
+    }
+    [data-theme="dark"]{
+      --bg:#0b0f14; --surface:#0f1722; --card:#111826; --card-2:#0e1623;
+      --text:#e6edf3; --muted:#9aa6b2;
+      --shadow-1: 0 10px 30px rgba(0,0,0,.35);
+      --shadow-2: 0 6px 18px rgba(0,0,0,.28);
+    }
+
+    /* ========== Base Reset ========== */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin:0; padding:0; }
+    body {
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans", "Helvetica Neue", Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color: var(--text);
+      background:
+        radial-gradient(1200px 800px at 10% -10%, color-mix(in oklab, var(--brand) 16%, transparent), transparent 60%),
+        radial-gradient(900px 700px at 100% 10%, color-mix(in oklab, var(--accent) 12%, transparent), transparent 55%),
+        var(--bg);
+      line-height: 1.6;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    a { color: var(--brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { width: min(var(--container), 92vw); margin: 0 auto; }
+
+    /* Smooth anchor scrolling + offset for sticky header */
+    html { scroll-behavior: smooth; }
+    #timeline { scroll-margin-top: 92px; }
+
+    /* ========== Fluid Type Scale ========== */
+    h1 { font-weight: 800; letter-spacing: -0.02em; font-size: clamp(1.9rem, 2.6vw, 3rem); line-height: 1.15; }
+    h2 { font-weight: 700; letter-spacing: -0.01em; font-size: clamp(1.25rem, 1.8vw, 1.6rem); line-height: 1.2; }
+    h3 { font-weight: 700; font-size: clamp(1.05rem, 1.5vw, 1.25rem); }
+    p, li, button { font-size: clamp(0.95rem, 1.15vw, 1.05rem); }
+
+    /* Better focus visibility (WCAG) */
+    :where(a, button, [role="button"], input, select, textarea) {
+      outline: none;
+    }
+    :where(a, button, [role="button"], input, select, textarea):focus-visible {
+      outline: 2px solid var(--ring);
+      outline-offset: 2px;
+      border-radius: 10px;
+      box-shadow: 0 0 0 4px color-mix(in oklab, var(--ring) 28%, transparent);
+    }
+
+    /* Reduce motion if preferred */
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; scroll-behavior: auto; }
+    }
+
+    /* ========== App Shell ========== */
+    header.nav {
+      position: sticky; top: 0; z-index: 40; backdrop-filter: saturate(1.2) blur(10px);
+      background: color-mix(in oklab, var(--surface) 88%, transparent);
+      border-bottom: 1px solid color-mix(in oklab, var(--text) 12%, transparent);
+    }
+    .nav-inner { display:flex; align-items:center; justify-content:space-between; padding: 14px 0; gap: 10px; }
+    .brand { display:flex; align-items:center; gap: 10px; min-width: 0; }
+    .logo {
+      width: 42px; height: 42px; border-radius: 12px;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.18), transparent 40%),
+        conic-gradient(from 210deg, var(--brand), var(--accent), var(--brand));
+      box-shadow: inset 0 0 22px rgba(255,255,255,.18), var(--shadow-2);
+      border: 1px solid color-mix(in oklab, var(--brand) 35%, transparent);
+    }
+    .brand h3 { margin:0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .actions { display:flex; gap: 10px; align-items:center; }
+
+    .btn {
+      border: 1px solid color-mix(in oklab, var(--text) 12%, transparent);
+      background: linear-gradient(180deg, color-mix(in oklab, var(--surface) 94%, transparent), color-mix(in oklab, var(--surface) 86%, transparent));
+      color: var(--text);
+      padding: 10px 14px; border-radius: 12px; cursor: pointer; transition: transform .18s var(--ease), border-color .18s var(--ease), background .18s var(--ease);
+      display:inline-flex; align-items:center; gap: 8px;
+    }
+    .btn:hover { transform: translateY(-1px); border-color: color-mix(in oklab, var(--brand) 40%, transparent); }
+    .btn.primary {
+      background: linear-gradient(180deg, var(--brand), var(--brand-700));
+      border-color: transparent; color: #fff; text-shadow: 0 1px 0 rgba(0,0,0,.18);
+      box-shadow: 0 10px 24px color-mix(in oklab, var(--brand) 35%, transparent);
+    }
+
     /* ========== Hero ========== */
-    .hero { padding: 32px 0 18px; }
-    .hero .container { display:grid; grid-template-columns: 1.25fr .75fr; gap: 30px; align-items:center; }
-    .hero-card {
-      background: linear-gradient(180deg, color-mix(in oklab, var(--card) 86%, transparent), color-mix(in oklab, var(--surface) 86%, transparent));
-      border: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
-      border-radius: var(--radius-xl); padding: 24px; box-shadow: var(--shadow);
-    }
-    .kpis { display:flex; gap: 14px; flex-wrap: wrap; margin-top: 14px; }
-    .kpi {
-      background: color-mix(in oklab, var(--brand) 14%, var(--card));
-      color: #fff; padding: 10px 12px; border-radius: 12px;
-      border: 1px solid color-mix(in oklab, var(--brand) 42%, transparent);
-    }
-    .tips {
-      display:grid; gap: 12px;
-    }
-    .tip {
-      display:flex; gap: 10px; align-items:flex-start; padding: 10px 12px; border-radius: 12px;
-      background: color-mix(in oklab, var(--accent) 10%, var(--surface));
-      border: 1px dashed color-mix(in oklab, var(--accent) 40%, transparent);
-      color: color-mix(in oklab, var(--text) 92%, transparent);
-    }
-    /* ========== Timeline Grid ========== */
-    .section { padding: 24px 0; }
-    .section h2 { margin: 0 0 8px; }
-    .lead { margin: 6px 0 16px; color: var(--muted); }
-    .grid {
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
-    }
-    .card {
-      background: linear-gradient(180deg, color-mix(in oklab, var(--card) 90%, transparent), color-mix(in oklab, var(--surface) 90%, transparent));
-      border: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow);
-      padding: 18px;
-      transform: translateY(6px); opacity: .0; transition: .5s cubic-bezier(.2,.8,.2,1);
-    }
-    .card.reveal { transform: translateY(0); opacity: 1; }
-    .time { font-weight:700; color: var(--brand); font-variant-numeric: tabular-nums; }
-    .title { font-weight: 700; margin: 6px 0 6px; }
-    .badges { display:flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
-    .badge {
-      padding: 6px 10px; border-radius: 999px; font-size: .85em; border: 1px solid color-mix(in oklab, var(--text) 12%, transparent);
-      background: color-mix(in oklab, var(--surface) 85%, transparent);
-    }
-    .badge.ok { border-color: color-mix(in oklab, var(--accent) 50%, transparent); color: var(--accent); }
-    .badge.warn { border-color: color-mix(in oklab, var(--warn) 50%, transparent); color: var(--warn); }
-    .badge.danger { border-color: color-mix(in oklab, var(--danger) 50%, transparent); color: var(--danger); }
-    /* ========== Smart Rules ========== */
-    .rules { display:grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-    .rule {
-      display:flex; gap: 12px; padding: 14px; border-radius: 14px;
-      background: color-mix(in oklab, var(--brand) 10%, var(--surface));
-      border: 1px solid color-mix(in oklab, var(--brand) 25%, transparent);
-    }
-    .rule b { display:block; }
-    /* ========== Footer ========== */
-    footer { padding: 22px 0 36px; color: var(--muted); }
-    .footer-note {
-      border-top: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
-      margin-top: 16px; padding-top: 16px;
-    }
-    /* ========== Responsive ========== */
-    @media (max-width: 900px) {
-      .hero .container { grid-template-columns: 1fr; }
-    }
-  </style>
+    .hero { padding: 32px 0 18px; }
+    .hero .container {
+      display:grid; grid-template-columns: 1.2fr .8fr; gap: 30px; align-items:center;
+    }
+    .hero-card {
+      background:
+        linear-gradient(180deg, color-mix(in oklab, var(--card) 86%, transparent), color-mix(in oklab, var(--surface) 86%, transparent));
+      border: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
+      border-radius: var(--radius-xl); padding: 24px; box-shadow: var(--shadow-1);
+      position: relative; overflow: hidden;
+    }
+    .hero-card::after {
+      content: ""; position: absolute; inset: -1px; border-radius: inherit;
+      pointer-events: none; mask: linear-gradient(#000 40%, transparent 80%);
+      background: linear-gradient(90deg,
+        color-mix(in oklab, var(--brand) 30%, transparent),
+        color-mix(in oklab, var(--accent) 30%, transparent));
+      opacity: .25;
+    }
+    .kpis { display:flex; gap: 12px; flex-wrap: wrap; margin-top: 14px; }
+    .kpi {
+      background: color-mix(in oklab, var(--brand) 14%, var(--card));
+      color: #fff; padding: 10px 12px; border-radius: 12px;
+      border: 1px solid color-mix(in oklab, var(--brand) 42%, transparent);
+      box-shadow: 0 6px 16px color-mix(in oklab, var(--brand) 28%, transparent);
+    }
+    .tips { display:grid; gap: 12px; }
+    .tip {
+      display:flex; gap: 10px; align-items:flex-start; padding: 12px 14px; border-radius: 12px;
+      background: color-mix(in oklab, var(--accent) 10%, var(--surface));
+      border: 1px dashed color-mix(in oklab, var(--accent) 40%, transparent);
+      color: color-mix(in oklab, var(--text) 92%, transparent);
+    }
+
+    /* ========== Section + Grid ========== */
+    .section { padding: 26px 0; }
+    .section h2 { margin: 0 0 8px; }
+    .lead { margin: 6px 0 16px; color: var(--muted); }
+
+    .grid {
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(var(--grid-min), 1fr));
+      gap: 16px;
+    }
+    .card {
+      background: linear-gradient(180deg, color-mix(in oklab, var(--card) 92%, transparent), color-mix(in oklab, var(--card-2) 92%, transparent));
+      border: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-2);
+      padding: 18px;
+      transform: translateY(6px); opacity: .0; transition: transform .5s var(--ease), opacity .5s var(--ease);
+    }
+    .card.reveal { transform: translateY(0); opacity: 1; }
+    .time { font-weight:700; color: var(--brand); font-variant-numeric: tabular-nums; letter-spacing: .02em; }
+    .title { font-weight: 700; margin: 6px 0 6px; }
+    .badges { display:flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+    .badge {
+      padding: 6px 10px; border-radius: 999px; font-size: .85em; border: 1px solid color-mix(in oklab, var(--text) 12%, transparent);
+      background: color-mix(in oklab, var(--surface) 85%, transparent);
+    }
+    .badge.ok { border-color: color-mix(in oklab, var(--accent) 55%, transparent); color: var(--accent); }
+    .badge.warn { border-color: color-mix(in oklab, var(--warn) 55%, transparent); color: var(--warn); }
+    .badge.danger { border-color: color-mix(in oklab, var(--danger) 55%, transparent); color: var(--danger); }
+
+    /* ========== Energy Tips ========== */
+    .tips-grid {
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+    }
+    .tip-card {
+      display:flex; gap: 12px; align-items:flex-start;
+      padding: 14px; border-radius: 14px;
+      background: linear-gradient(180deg, color-mix(in oklab, var(--surface) 90%, transparent), color-mix(in oklab, var(--card) 90%, transparent));
+      border: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
+      box-shadow: var(--shadow-2);
+    }
+    .tip-emoji {
+      width: 40px; height: 40px; border-radius: 10px; flex: 0 0 40px;
+      display:grid; place-items:center;
+      background: color-mix(in oklab, var(--brand) 16%, var(--card));
+      border: 1px solid color-mix(in oklab, var(--brand) 36%, transparent);
+    }
+    .tip-text b { display:block; margin-bottom: 4px; }
+
+    /* ========== Footer ========== */
+    footer { padding: 22px 0 36px; color: var(--muted); }
+    .footer-note {
+      border-top: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
+      margin-top: 16px; padding-top: 16px;
+    }
+
+    /* ========== Utilities ========== */
+    .pill {
+      display:inline-flex; gap:8px; align-items:center; padding:8px 12px; border-radius:999px;
+      border: 1px solid color-mix(in oklab, var(--text) 12%, transparent);
+      background: color-mix(in oklab, var(--surface) 88%, transparent);
+    }
+
+    /* Floating to-top button */
+    .to-top {
+      position: fixed; right: 16px; bottom: 16px; z-index: 50; opacity: 0; pointer-events: none;
+      transition: opacity .2s var(--ease), transform .2s var(--ease);
+      transform: translateY(8px);
+    }
+    .to-top.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
+
+    /* ========== Responsive ========== */
+    @media (max-width: 980px) {
+      .hero .container { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-  <!-- Nav -->
-  <header class="nav">
-    <div class="container nav-inner">
-      <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
-        <h3>NEET Energy • Routine</h3>
-      </div>
-      <div class="actions">
-        <button class="btn" id="themeToggle" aria-label="Toggle dark mode">🌓 Theme</button>
-        <a class="btn primary" href="#timeline">View routine</a>
-      </div>
-    </div>
-  </header>
-  <!-- Hero -->
-  <section class="hero">
-    <div class="container">
-      <div class="hero-card">
-        <h1>Energy-Smart Study Routine</h1>
-        <p class="lead">7:00 AM to 12:00 AM—science-based schedule for all-day high focus, steady energy, and better sleep.</p>
-        <div class="kpis">
-          <div class="kpi">💧 Hydration-First</div>
-          <div class="kpi">🧠 Deep-Work Blocks</div>
-          <div class="kpi">😴 15–20m Power Nap</div>
-          <div class="kpi">☕ Caffeine Cut-Off</div>
-        </div>
-      </div>
-      <div class="tips">
-        <div class="tip">📱 Mobile-first, fluid typography, auto-fit grid—premium look on all screens.</div>
-        <div class="tip">🔒 Gentle contrast, readability-optimized, reduced-glare background.</div>
-        <div class="tip">🌓 System theme + manual dark/light toggle.</div>
-      </div>
-    </div>
-  </section>
-  <!-- Timeline -->
-  <main class="section" id="timeline">
-    <div class="container">
-      <h2>Time-based routine</h2>
-      <p class="lead">Maintain steady energy all day by aligning food + movement + naps + caffeine timing.</p>
-      <div class="grid">
-        <!-- Morning -->
-        <article class="card">
-          <div class="time">7:00 AM</div>
-          <div class="title">Wake up + 1 glass water</div>
-          <p>Start with water to reduce dehydration-related fatigue and boost mood and alertness.</p>
-          <div class="badges"><span class="badge ok">💧 Hydrate</span></div>
-        </article>
-        <article class="card">
-          <div class="time">7:10 AM</div>
-          <div class="title">10–15m light movement</div>
-          <p>Stretch/walk to increase circulation and give a natural energy kick.</p>
-          <div class="badges"><span class="badge ok">🏃 Move</span></div>
-        </article>
-        <article class="card">
-          <div class="time">7:30 AM</div>
-          <div class="title">Balanced breakfast</div>
-          <p>Protein + complex carbs + fiber (oats/whole-grain + yogurt/eggs + fruit) keep energy steady all day.</p>
-          <div class="badges"><span class="badge ok">🍽️ Balanced</span></div>
-        </article>
-        <article class="card">
-          <div class="time">8:15 AM</div>
-          <div class="title">Optional 1 cup tea/coffee</div>
-          <p>Morning caffeine boosts alertness quickly—respect the later cut-off to protect sleep.</p>
-          <div class="badges"><span class="badge warn">☕ Caffeine</span></div>
-        </article>
-        <article class="card">
-          <div class="time">8:45–10:15 AM</div>
-          <div class="title">Deep-study session</div>
-          <p>90 minutes of focused study with water sips and small posture changes.</p>
-          <div class="badges"><span class="badge ok">📚 Focus</span></div>
-        </article>
-        <article class="card">
-          <div class="time">10:15 AM</div>
-          <div class="title">Smart snack + walk</div>
-          <p>Fruit + nuts/peanuts and a 5–10m brisk walk provide quick yet sustained energy.</p>
-          <div class="badges"><span class="badge ok">🥜 Fuel</span></div>
-        </article>
-        <!-- Midday -->
-        <article class="card">
-          <div class="time">12:30 PM</div>
-          <div class="title">Lunch (fiber-forward)</div>
-          <p>Brown rice/whole-grain roti + dal/eggs/fish/chicken + vegetables = low-GI energy.</p>
-          <div class="badges"><span class="badge ok">🥗 Balanced</span></div>
-        </article>
-        <article class="card">
-          <div class="time">1:00–1:20 PM</div>
-          <div class="title">15–20m power nap</div>
-          <p>Short naps cut sleepiness; avoid 30m+ to prevent sleep inertia.</p>
-          <div class="badges"><span class="badge ok">😴 Nap</span><span class="badge warn">⏱️ 15–20m</span></div>
-        </article>
-        <article class="card">
-          <div class="time">2:00–3:30 PM</div>
-          <div class="title">Deep-study session</div>
-          <p>Alertness peaks after a nap—tackle challenging topics.</p>
-          <div class="badges"><span class="badge ok">📖 Focus</span></div>
-        </article>
-        <!-- Evening -->
-        <article class="card">
-          <div class="time">3:30–4:00 PM</div>
-          <div class="title">Snack + walk</div>
-          <p>Small serving of yogurt/fruit/dark chocolate + 5–10m walk reduces the afternoon dip.</p>
-          <div class="badges"><span class="badge ok">🍫 Smart Snack</span></div>
-        </article>
-        <article class="card">
-          <div class="time">After 4:00 PM</div>
-          <div class="title">Caffeine cut-off</div>
-          <p>If target bedtime is 12:00 AM, stop caffeine ~8 hours earlier.</p>
-          <div class="badges"><span class="badge danger">🚫 Caffeine</span></div>
-        </article>
-        <article class="card">
-          <div class="time">5:30–6:00 PM</div>
-          <div class="title">Light–moderate exercise</div>
-          <p>20–30 minutes cardio/bodyweight—boosts ATP production and mood.</p>
-          <div class="badges"><span class="badge ok">🏋️ Move</span></div>
-        </article>
-        <!-- Night -->
-        <article class="card">
-          <div class="time">7:30–8:00 PM</div>
-          <div class="title">Dinner (balanced)</div>
-          <p>Lower refined sugar/carbs; emphasize protein + vegetables to avoid nighttime energy crashes.</p>
-          <div class="badges"><span class="badge ok">🍽️ Balanced</span></div>
-        </article>
-        <article class="card">
-          <div class="time">9:00 PM</div>
-          <div class="title">Screen down + relax</div>
-          <p>Stretch/breathing/light reading—wind down to improve sleep quality.</p>
-          <div class="badges"><span class="badge ok">🧘 Calm</span></div>
-        </article>
-        <article class="card">
-          <div class="time">11:30 PM</div>
-          <div class="title">Bedtime routine</div>
-          <p>Consistent routines support faster sleep onset and deeper sleep.</p>
-          <div class="badges"><span class="badge ok">🌙 Sleep</span></div>
-        </article>
-        <article class="card">
-          <div class="time">12:00 AM</div>
-          <div class="title">Target: 7–9 hours sleep</div>
-          <p>Too little night sleep reduces next-day energy and increases caffeine reliance.</p>
-          <div class="badges"><span class="badge ok">⏰ 7–9h</span></div>
-        </article>
-      </div>
-    </div>
-  </main>
-  <!-- Smart Rules -->
-  <section class="section">
-    <div class="container">
-      <h2>Smart Rules</h2>
-      <p class="lead">Small habits drive big results—follow these five rules.</p>
-      <div class="rules">
-        <div class="rule">💧 <div><b>Hydrate First</b> When tired, drink water first; keep a bottle within reach all day.</div></div>
-        <div class="rule">🍽️ <div><b>Balanced Plate</b> Protein + complex carbs + fiber + healthy fats = sustained energy.</div></div>
-        <div class="rule">😴 <div><b>Power Nap 15–20m</b> No more than 30 minutes; avoid evening naps to protect night sleep.</div></div>
-        <div class="rule">☕ <div><b>8h Caffeine Cut-off</b> Stop caffeine ~8 hours before your target bedtime.</div></div>
-        <div class="rule">🏃 <div><b>Micro-Move</b> Between study blocks, 5–10m walk/stretch reduces energy dips.</div></div>
-      </div>
-      <div class="footer-note">
-        <small>Health tips sources: natural energy boosts, nap guidelines, balanced meals, caffeine timing.</small>
-      </div>
-    </div>
-  </section>
-  <footer>
-    <div class="container">
-      <small>© 2025 Energy-Boost Routine • Built with mobile-first, fluid type, auto-fit grids, and accessible contrast.</small>
-    </div>
-  </footer>
-  <script>
-    // Theme Toggle with localStorage
-    (function(){
-      const root = document.documentElement;
-      const btn = document.getElementById('themeToggle');
-      const saved = localStorage.getItem('theme');
-      if(saved === 'light' || saved === 'dark'){ root.setAttribute('data-theme', saved); }
-      btn.addEventListener('click', () => {
-        const current = root.getAttribute('data-theme');
-        const next = current === 'dark' ? 'light' : 'dark';
-        root.setAttribute('data-theme', next);
-        localStorage.setItem('theme', next);
-      });
-    })();
-    // Reveal on scroll
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('reveal'); }});
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.card').forEach(c => observer.observe(c));
-    // Anchor click fallback with precise offset (for mobile viewers)
-    (function () {
-      const link = document.querySelector('a[href="#timeline"]');
-      const section = document.getElementById('timeline');
-      const header = document.querySelector('header.nav');
-      if (link && section) {
-        link.addEventListener('click', (e) => {
-          e.preventDefault();
-          const y = section.getBoundingClientRect().top + window.pageYOffset - (header?.offsetHeight || 0) - 8;
-          window.scrollTo({ top: y, behavior: 'smooth' });
-        });
-      }
-    })();
-  </script>
+  <!-- Nav -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <h3>NEET Energy • Routine</h3>
+      </div>
+      <div class="actions">
+        <button class="btn" id="themeToggle" aria-label="Toggle dark mode">🌓 Theme</button>
+        <a class="btn primary" href="#timeline">View routine</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-card">
+        <h1>Energy-Smart Study Routine</h1>
+        <p class="lead">7:00 AM to 12:00 AM—science-based schedule for high focus, steady energy, and better sleep.</p>
+        <div class="kpis">
+          <div class="kpi">💧 Hydration-First</div>
+          <div class="kpi">🧠 Deep-Work Blocks</div>
+          <div class="kpi">😴 15–20m Power Nap</div>
+          <div class="kpi">☕ Caffeine Cut-Off</div>
+        </div>
+      </div>
+      <div class="tips">
+        <div class="tip">📱 Mobile-first, fluid type, auto-fit grid—premium look on all screens.</div>
+        <div class="tip">🔒 Gentle contrast, readability-optimized, reduced-glare background.</div>
+        <div class="tip">🌓 System theme + manual dark/light toggle + reduced-motion support.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <main class="section" id="timeline">
+    <div class="container">
+      <div class="pill" style="margin-bottom:10px">⚡ Energy-Timed Schedule</div>
+      <h2>Time-based routine</h2>
+      <p class="lead">Maintain steady energy by aligning food, movement, naps, and caffeine timing with the body’s rhythms.</p>
+
+      <div class="grid">
+        <!-- Morning -->
+        <article class="card"><div class="time">7:00 AM</div><div class="title">Wake up + 1 glass water</div><p>Start with water to curb dehydration-related fatigue and prime alertness.</p><div class="badges"><span class="badge ok">💧 Hydrate</span></div></article>
+        <article class="card"><div class="time">7:10 AM</div><div class="title">10–15m light movement</div><p>Stretch/walk to increase circulation and give a natural energy kick.</p><div class="badges"><span class="badge ok">🏃 Move</span></div></article>
+        <article class="card"><div class="time">7:30 AM</div><div class="title">Balanced breakfast</div><p>Protein + complex carbs + fiber (oats/whole-grain + yogurt/eggs + fruit) keep energy steady.</p><div class="badges"><span class="badge ok">🍽️ Balanced</span></div></article>
+        <article class="card"><div class="time">8:15 AM</div><div class="title">Optional 1 cup tea/coffee</div><p>Morning caffeine boosts alertness—respect the later cut-off to protect sleep.</p><div class="badges"><span class="badge warn">☕ Caffeine</span></div></article>
+        <article class="card"><div class="time">8:45–10:15 AM</div><div class="title">Deep-study session</div><p>90 minutes of focused study with water sips and small posture changes.</p><div class="badges"><span class="badge ok">📚 Focus</span></div></article>
+        <article class="card"><div class="time">10:15 AM</div><div class="title">Smart snack + walk</div><p>Fruit + nuts/peanuts and a 5–10m brisk walk provide quick yet sustained energy.</p><div class="badges"><span class="badge ok">🥜 Fuel</span></div></article>
+
+        <!-- Midday -->
+        <article class="card"><div class="time">12:30 PM</div><div class="title">Lunch (fiber-forward)</div><p>Brown rice/whole-grain roti + dal/eggs/fish/chicken + vegetables = low-GI energy.</p><div class="badges"><span class="badge ok">🥗 Balanced</span></div></article>
+        <article class="card"><div class="time">1:00–1:20 PM</div><div class="title">15–20m power nap</div><p>Short naps cut sleepiness; avoid 30m+ to prevent sleep inertia.</p><div class="badges"><span class="badge ok">😴 Nap</span><span class="badge warn">⏱️ 15–20m</span></div></article>
+        <article class="card"><div class="time">2:00–3:30 PM</div><div class="title">Deep-study session</div><p>Alertness peaks after a nap—tackle challenging topics.</p><div class="badges"><span class="badge ok">📖 Focus</span></div></article>
+
+        <!-- Evening -->
+        <article class="card"><div class="time">3:30–4:00 PM</div><div class="title">Snack + walk</div><p>Yogurt/fruit/70% dark chocolate + 5–10m walk can reduce the afternoon dip.</p><div class="badges"><span class="badge ok">🍫 Smart Snack</span></div></article>
+        <article class="card"><div class="time">After 4:00 PM</div><div class="title">Caffeine cut-off</div><p>If target bedtime is 12:00 AM, stop caffeine ~8 hours earlier.</p><div class="badges"><span class="badge danger">🚫 Caffeine</span></div></article>
+        <article class="card"><div class="time">5:30–6:00 PM</div><div class="title">Light–moderate exercise</div><p>20–30 minutes cardio/bodyweight—boosts energy and mood.</p><div class="badges"><span class="badge ok">🏋️ Move</span></div></article>
+
+        <!-- Night -->
+        <article class="card"><div class="time">7:30–8:00 PM</div><div class="title">Dinner (balanced)</div><p>Lower refined carbs; emphasize protein + vegetables to avoid nighttime crashes.</p><div class="badges"><span class="badge ok">🍽️ Balanced</span></div></article>
+        <article class="card"><div class="time">9:00 PM</div><div class="title">Screen down + relax</div><p>Stretch/breathing/light reading—wind down to improve sleep quality.</p><div class="badges"><span class="badge ok">🧘 Calm</span></div></article>
+        <article class="card"><div class="time">11:30 PM</div><div class="title">Bedtime routine</div><p>Consistent routines support faster sleep onset and deeper sleep.</p><div class="badges"><span class="badge ok">🌙 Sleep</span></div></article>
+        <article class="card"><div class="time">12:00 AM</div><div class="title">Target: 7–9 hours sleep</div><p>Too little sleep reduces next-day energy and increases caffeine reliance.</p><div class="badges"><span class="badge ok">⏰ 7–9h</span></div></article>
+      </div>
+    </div>
+  </main>
+
+  <!-- Energy Tips -->
+  <section class="section">
+    <div class="container">
+      <div class="pill" style="margin-bottom:10px">🧪 Evidence-Based Tips</div>
+      <h2>Energy gain tips</h2>
+      <p class="lead">Use these smart tweaks to increase alertness, stabilize energy, and improve sleep quality.</p>
+      <div class="tips-grid">
+        <div class="tip-card">
+          <div class="tip-emoji">💧</div>
+          <div class="tip-text">
+            <b>Hydrate on waking + between blocks</b>
+            <p>Mild dehydration impairs attention, reaction time, and short-term memory—drink water first when feeling tired.</p>
+          </div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-emoji">😴</div>
+          <div class="tip-text">
+            <b>Power nap 10–20 minutes (1–3 PM)</b>
+            <p>Short naps cut fatigue and boost alertness without sleep inertia; avoid longer naps late in the day.</p>
+          </div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-emoji">☕</div>
+          <div class="tip-text">
+            <b>Caffeine cut-off ≈ 8 hours before bed</b>
+            <p>Caffeine’s multi-hour half-life can fragment sleep even if sleep onset seems normal—time intake strategically.</p>
+          </div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-emoji">🥗</div>
+          <div class="tip-text">
+            <b>Low‑GI carbs + protein + fiber</b>
+            <p>Whole grains, legumes, vegetables, nuts, and protein help keep energy steadier than high‑GI refined carbs.</p>
+          </div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-emoji">🚶</div>
+          <div class="tip-text">
+            <b>Micro‑breaks: 3–10 minutes light walking</b>
+            <p>Short movement breaks reduce fatigue and help sustain vigor between deep‑work sessions.</p>
+          </div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-emoji">🏃</div>
+          <div class="tip-text">
+            <b>20–30 minutes daily exercise</b>
+            <p>Regular light–moderate aerobic activity improves daytime energy and mood over time.</p>
+          </div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-emoji">🍫</div>
+          <div class="tip-text">
+            <b>Optional: 70% dark chocolate (small)</b>
+            <p>Cocoa flavanols may support vigilance and working memory during demanding study, especially when sleep‑pressured.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-note">
+        <small>Health tips sources: hydration and cognition; power nap benefits; caffeine timing; low‑GI eating; micro‑breaks; exercise; cocoa flavanols.</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- Smart Rules -->
+  <section class="section">
+    <div class="container">
+      <h2>Smart Rules</h2>
+      <p class="lead">Small habits drive big results—follow these five rules.</p>
+      <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+        <div class="tip-card"><div class="tip-emoji">💧</div><div><b>Hydrate First</b> Keep a bottle within reach; drink before snacks to reduce fatigue signals.</div></div>
+        <div class="tip-card"><div class="tip-emoji">🍽️</div><div><b>Balanced Plate</b> Protein + complex carbs + fiber + healthy fats = sustained energy.</div></div>
+        <div class="tip-card"><div class="tip-emoji">😴</div><div><b>Power Nap 15–20m</b> No more than 30 minutes; avoid evening naps to protect night sleep.</div></div>
+        <div class="tip-card"><div class="tip-emoji">☕</div><div><b>8h Caffeine Cut-off</b> Stop caffeine ~8 hours before your target bedtime.</div></div>
+        <div class="tip-card"><div class="tip-emoji">🏃</div><div><b>Micro-Move</b> Between study blocks, 5–10m walk/stretch reduces energy dips.</div></div>
+      </div>
+      <div class="footer-note">
+        <small>© 2025 Energy-Boost Routine • Mobile-first, fluid type, auto-fit grids, accessible focus, reduced-motion safe.</small>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <small>© 2025 Energy-Boost Routine • Built for mobile, tablet, and desktop with adaptive grids and theme toggle.</small>
+    </div>
+  </footer>
+
+  <!-- Floating To Top -->
+  <a href="#top" class="btn to-top" id="toTop" aria-label="Back to top">⬆️ Top</a>
+
+  <script>
+    // Theme Toggle with localStorage
+    (function(){
+      const root = document.documentElement;
+      const btn = document.getElementById('themeToggle');
+      const saved = localStorage.getItem('theme');
+      if(saved === 'light' || saved === 'dark'){ root.setAttribute('data-theme', saved); }
+      btn.addEventListener('click', () => {
+        const current = root.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+      });
+    })();
+
+    // Reveal on scroll (disabled if reduced motion)
+    (function(){
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if(reduce) {
+        document.querySelectorAll('.card').forEach(c => c.classList.add('reveal'));
+        return;
+      }
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('reveal'); }});
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.card').forEach(c => observer.observe(c));
+    })();
+
+    // Anchor click precise offset
+    (function () {
+      const link = document.querySelector('a[href="#timeline"]');
+      const section = document.getElementById('timeline');
+      const header = document.querySelector('header.nav');
+      if (link && section) {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const y = section.getBoundingClientRect().top + window.pageYOffset - (header?.offsetHeight || 0) - 8;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        });
+      }
+    })();
+
+    // Back to top show/hide
+    (function(){
+      const toTop = document.getElementById('toTop');
+      const onScroll = () => {
+        if (window.scrollY > 320) { toTop.classList.add('show'); }
+        else { toTop.classList.remove('show'); }
+      };
+      document.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+  </script>
 </body>
 </html>
